@@ -1,0 +1,21 @@
+PROG -> EXPR | EXPR PROG
+
+EXPR -> IDENTIFY
+	| if (COND) EXPR else EXPR
+	| while (COND) EXPR
+	| for (IDENTIFY COND; id = E) expr
+	| id = E;
+
+IDENTIFY -> num_type id;
+	  | num_type id = E;
+
+COND ->   E == E
+	| E != E
+	| E > E
+	| E < E
+	| E >= E
+	| E <= E
+
+E -> T+E | T-E | T
+
+T -> idornum * T | idornum/T | idornum | (E)
